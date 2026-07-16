@@ -1,0 +1,638 @@
+/* ==========================================================================
+   1. RESET & FONTS
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Playfair Display", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f7f4ee;
+  color: #2b2a27;
+  padding: 6rem 4rem 2rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+p,
+li,
+table,
+span,
+strong,
+a {
+  font-family: "DM Sans", sans-serif;
+}
+
+/* ==========================================================================
+   2. FLEXIBLE STICKY NAVBAR
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(247, 244, 238, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 4rem;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(211, 205, 191, 0.5);
+  transition: all 0.3s ease;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #615f5c;
+  font-size: 0.9rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #556b2f;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #556b2f;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* HAMBURGER MENU STYLES (DESKTOP: HIDDEN) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  z-index: 1001;
+}
+
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #2b2a27;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ==========================================================================
+   3. HERO SECTION
+   ========================================================================== */
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid #d3cdbf;
+  padding-bottom: 3rem;
+}
+
+.hero-tagline {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: #615f5c;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.logo-text {
+  font-size: 6.5rem;
+  font-weight: 700;
+  letter-spacing: -3px;
+  line-height: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.hero-text h2 {
+  font-size: 2rem;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.highlight-text {
+  font-style: italic;
+  font-family: "Playfair Display", serif;
+  color: #556b2f;
+  font-weight: 600;
+  padding: 0 2px;
+}
+
+.bio {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #615f5c;
+}
+
+.hero-img {
+  width: 200%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 24px;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hero-img:hover {
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   4. GLOBAL SECTION HEADERS
+   ========================================================================== */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #d3cdbf;
+  padding-bottom: 0.5rem;
+}
+
+.section-header h2 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.view-all {
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #2b2a27;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border-bottom: 1.5px solid transparent;
+  padding-bottom: 2px;
+}
+
+.view-all:hover {
+  color: #556b2f;
+  transform: translateX(6px);
+  border-bottom: 1.5px solid #556b2f;
+}
+
+/* ==========================================================================
+   5. ABOUT SECTION
+   ========================================================================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+  align-items: flex-start;
+  margin-bottom: 4rem;
+}
+
+.about-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #d3cdbf;
+  transition: transform 0.4s ease;
+}
+
+.about-img-container {
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.about-img-container:hover .about-img {
+  transform: scale(1.05);
+}
+
+.about-text p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #4a4945;
+}
+
+.values-list {
+  list-style: none;
+}
+
+.values-list li {
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   6. SELECTED WORKS
+   ========================================================================== */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.work-card {
+  background: #ebe6dc;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.work-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  background: #eae3d5;
+}
+
+.work-card h3 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.work-card p {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #555;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.tech-stack {
+  font-size: 0.75rem;
+  color: #556b2f;
+  border-top: 1px solid #d3cdbf;
+  padding-top: 0.5rem;
+}
+
+/* ==========================================================================
+   7. FEATURED PROJECT
+   ========================================================================== */
+.featured-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.featured-image img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.featured-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.detail-box {
+  background: #ebe6dc;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.detail-box strong {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.featured-breakdown {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  background: #ebe6dc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 4rem;
+}
+
+.featured-breakdown h4 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.featured-breakdown p {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #555;
+}
+
+/* ==========================================================================
+   8. SKILLS & CERTIFICATE
+   ========================================================================== */
+.skills-cert-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+  background: #ebe6dc;
+  padding: 2.5rem;
+  border-radius: 12px;
+}
+
+.skills-cert-section h3 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #d3cdbf;
+  padding-bottom: 0.3rem;
+}
+
+.skills-block ul,
+.learning-cert-block ul {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.skills-block li,
+.learning-cert-block li {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.cert-title {
+  margin-top: 2rem;
+}
+
+.cert-table-container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.cert-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cert-table th,
+.cert-table td {
+  text-align: left;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid #d3cdbf;
+  font-size: 0.85rem;
+}
+
+.table-row-hover {
+  transition: background-color 0.3s ease;
+}
+
+.table-row-hover:hover {
+  background-color: rgba(85, 107, 47, 0.08);
+}
+
+.cert-images {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cert-images img {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  border: 1px solid #d3cdbf;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.15) rotate(2deg);
+  z-index: 10;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   9. CLOSING & CONTACT
+   ========================================================================== */
+.cta-banner {
+  background-color: #556b2f;
+  color: #f7f4ee;
+  padding: 3rem;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.closing-quote {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.cta-right h3 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.contact-links {
+  list-style: none;
+}
+
+.contact-links li {
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+.contact-links a {
+  color: #f7f4ee;
+  text-decoration: none;
+  border-bottom: 1px dashed #f7f4ee;
+  transition: all 0.3s ease;
+}
+
+.contact-links a:hover {
+  color: #ebe6dc;
+  padding-left: 4px;
+}
+
+/* ==========================================================================
+   10. MOTION ANIMATION KEYFRAMES
+   ========================================================================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.fade-in-delay {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease 0.3s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   11. RESPONSIVE DESIGN (MEDIA QUERIES) - FIXED MOBILE MENU
+   ========================================================================== */
+@media (max-width: 992px) {
+  body {
+    padding: 6rem 1.5rem 2rem 1.5rem;
+  }
+  .navbar {
+    padding: 1.2rem 1.5rem;
+  }
+
+  /* Memunculkan tombol hamburger di layar kecil */
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* MENYEMBUNYIKAN MENU & MENGATUR TAMPILAN DROPDOWN */
+  .nav-links {
+    display: none; /* Menyembunyikan menu teks bawaan secara total saat awal */
+    position: fixed;
+    top: 60px; /* Tepat di bawah batas sticky navbar */
+    left: 0;
+    width: 100%;
+    background-color: #f7f4ee;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+    border-bottom: 1px solid #d3cdbf;
+  }
+
+  /* KETIKA HAMBURGER DIKLIK (.active DIPICU JS), TAMPILKAN MENU DENGAN TRANSISE */
+  .nav-links.active {
+    display: flex; /* Memunculkan kembali menu */
+    animation: slideDown 0.3s ease-out forwards;
+  }
+
+  /* Animasi munculnya dropdown menu */
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ANIMASI TOMBOL HAMBURGER MENJADI HURUF X */
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+    background-color: #556b2f;
+  }
+
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+    background-color: #556b2f;
+  }
+
+  /* Penyesuaian Grid Layout pada Smartphone */
+  .hero,
+  .about-grid,
+  .featured-container,
+  .skills-cert-section,
+  .cta-banner {
+    grid-template-columns: 1fr;
+  }
+  .works-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .featured-breakdown,
+  .cert-table-container {
+    grid-template-columns: 1fr;
+  }
+  .logo-text {
+    font-size: 4rem;
+  }
+  .about-img {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .works-grid {
+    grid-template-columns: 1fr;
+  }
+  .nav-links {
+    gap: 1.5rem;
+  }
+  .nav-links a {
+    font-size: 1.1rem; /* Ukuran menu teks diatur pas dan nyaman disentuh di HP */
+  }
+}
